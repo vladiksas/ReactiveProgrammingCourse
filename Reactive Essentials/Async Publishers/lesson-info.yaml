@@ -1,0 +1,8 @@
+content:
+- CreateSequence
+- GenerateUUID
+- PropertiesSource
+- CreateTempFile
+- ValidateDuration
+- FibonacciSequence
+type: Stepik

@@ -1,0 +1,313 @@
+type: edu
+custom_name: Application
+files:
+- name: resources/ui/main.js
+  visible: true
+  learner_created: false
+- name: resources/ui/index.html
+  visible: true
+  text: |-
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+        <link
+          rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"
+        >
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <title>React App</title>
+      </head>
+      <body>
+        <noscript>
+          You need to enable JavaScript to run this app.
+        </noscript>
+        <div id="root"></div>
+      <script type="text/javascript" src="main.js"></script></body>
+    </html>
+  learner_created: false
+- name: resources/ui/favicon.ico
+  visible: true
+  learner_created: false
+- name: build.gradle
+  visible: false
+  text: |-
+    dependencies {
+      implementation 'io.projectreactor.netty:reactor-netty'
+      implementation 'com.fasterxml.jackson.core:jackson-databind'
+      implementation 'io.r2dbc:r2dbc-h2'
+      implementation 'io.micrometer:micrometer-core'
+      implementation 'io.dropwizard.metrics:metrics-core'
+      implementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo'
+      implementation 'org.mongodb:mongodb-driver-reactivestreams'
+
+      implementation project(':Reactive_In_Action-Crypto_Tracker-price-service')
+      implementation project(':Reactive_In_Action-Crypto_Tracker-price-service-idl')
+      implementation project(':Reactive_In_Action-Crypto_Tracker-trade-service')
+      implementation project(':Reactive_In_Action-Crypto_Tracker-trade-service-idl')
+      implementation project(':Reactive_In_Action-Crypto_Tracker-crypto-service')
+      implementation project(':Reactive_In_Action-Crypto_Tracker-crypto-service-idl')
+      implementation project(':Reactive_In_Action-Crypto_Tracker-common')
+    }
+  learner_created: false
+- name: src/controller/WSHandler.java
+  visible: true
+  text: "package controller;\n\nimport dto.MessageDTO;\nimport reactor.core.publisher.Flux;\n\
+    import service.PriceService;\nimport service.TradeService;\n\npublic class WSHandler\
+    \ {\n\n\tprivate final PriceService priceService;\n\tprivate final TradeService\
+    \ tradeService;\n\n\tpublic WSHandler(PriceService priceService, TradeService\
+    \ tradeService) {\n\t\tthis.priceService = priceService;\n\t\tthis.tradeService\
+    \ = tradeService;\n\t}\n\n\tpublic Flux<MessageDTO> handle(Flux<Long> input) {\n\
+    \t\treturn Flux.merge(\n\t\t\t\tpriceService.pricesStream(input),\n\t\t\t\ttradeService.tradesStream()\n\
+    \t\t);\n\t}\n}\n"
+  learner_created: false
+- name: src/utils/EmbeddedMongo.java
+  visible: true
+  text: "package utils;\n\nimport java.io.IOException;\n\nimport de.flapdoodle.embed.mongo.MongodExecutable;\n\
+    import de.flapdoodle.embed.mongo.MongodStarter;\nimport de.flapdoodle.embed.mongo.config.MongodConfig;\n\
+    import de.flapdoodle.embed.mongo.config.Net;\nimport de.flapdoodle.embed.mongo.distribution.Version;\n\
+    import de.flapdoodle.embed.process.runtime.Network;\n\npublic class EmbeddedMongo\
+    \ {\n\n\tpublic static void run() throws IOException {\n\t\tMongodStarter starter\
+    \ = MongodStarter.getDefaultInstance();\n\n\t\tString bindIp = \"localhost\";\n\
+    \t\tint port = 27017;\n\t\tMongodConfig mongodConfig = MongodConfig.builder()\n\
+    \t\t\t\t.version(Version.Main.PRODUCTION)\n\t\t\t\t.net(new Net(bindIp, port,\
+    \ Network.localhostIsIPv6()))\n\t\t\t\t.build();\n\n\t\tMongodExecutable mongodExecutable\
+    \ = starter.prepare(mongodConfig);\n\t\tmongodExecutable.start();\n\n\t\tRuntime.getRuntime()\n\
+    \t\t       .addShutdownHook(new Thread(mongodExecutable::stop));\n\t}\n}\n"
+  learner_created: false
+- name: src/utils/H2Helper.java
+  visible: true
+  text: "package utils;\n\nimport io.r2dbc.h2.H2ConnectionConfiguration;\nimport io.r2dbc.h2.H2ConnectionFactory;\n\
+    import io.r2dbc.spi.ConnectionFactory;\n\npublic class H2Helper {\n\n\tpublic\
+    \ static ConnectionFactory createInMemH2() {\n\t\tH2ConnectionConfiguration conf\
+    \ = H2ConnectionConfiguration.builder()\n\t\t                                \
+    \                          .url(\"mem:db;DB_CLOSE_DELAY=-1;TRACE_LEVEL_SYSTEM_OUT=2\"\
+    )\n\t\t                                                          .build();\n\n\
+    \t\treturn new H2ConnectionFactory(conf);\n\t}\n}\n"
+  learner_created: false
+- name: src/utils/HttpResourceResolver.java
+  visible: true
+  text: |
+    /**
+     * Copyright (C) Zoomdata, Inc. 2012-2018. All rights reserved.
+     */
+    package utils;
+
+    import java.net.URI;
+    import java.nio.file.Paths;
+    import java.util.logging.Logger;
+
+    public class HttpResourceResolver {
+        private static final Logger logger = Logger.getLogger("http-server");
+
+        public static String resourcePath(String fileName) {
+            try {
+                URI resourceUri = ClassLoader.getSystemResource(fileName).toURI();
+                String location = Paths.get(resourceUri).toAbsolutePath().toString();
+                logger.info("File [" + fileName + "] location: " + location);
+                return location;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+  learner_created: false
+- name: src/utils/JsonUtils.java
+  visible: true
+  text: |
+    package utils;
+
+    import com.fasterxml.jackson.core.JsonProcessingException;
+    import com.fasterxml.jackson.databind.ObjectMapper;
+    import reactor.core.Exceptions;
+
+    public class JsonUtils {
+        private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
+        public static String writeAsString(Object o) {
+            try {
+                return OBJECT_MAPPER.writeValueAsString(o);
+            } catch (JsonProcessingException e) {
+                throw Exceptions.propagate(e);
+            }
+        }
+    }
+  learner_created: false
+- name: src/utils/MetricsConfig.java
+  visible: true
+  text: "package utils;\n\nimport java.util.concurrent.TimeUnit;\n\nimport com.codahale.metrics.ConsoleReporter;\n\
+    import com.codahale.metrics.Meter;\nimport com.codahale.metrics.MetricRegistry;\n\
+    import io.micrometer.core.instrument.Clock;\nimport io.micrometer.core.instrument.Metrics;\n\
+    import io.micrometer.core.instrument.dropwizard.DropwizardConfig;\nimport io.micrometer.core.instrument.dropwizard.DropwizardMeterRegistry;\n\
+    import io.micrometer.core.instrument.util.HierarchicalNameMapper;\n\npublic final\
+    \ class MetricsConfig {\n\n\tprivate MetricsConfig() {\n\t}\n\n\tpublic static\
+    \ void init() {\n\t\tfinal DropwizardConfig config = new DropwizardConfig() {\n\
+    \t\t\t@Override\n\t\t\tpublic String prefix() {\n\t\t\t\treturn \"dropwizard\"\
+    ;\n\t\t\t}\n\n\t\t\t@Override\n\t\t\tpublic String get(String key) {\n\t\t\t\t\
+    return null;\n\t\t\t}\n\t\t};\n\n\t\tMetricRegistry metricRegistry = new MetricRegistry();\n\
+    \t\tfinal DropwizardMeterRegistry registry = new DropwizardMeterRegistry(config,\n\
+    \t\t\t\tmetricRegistry,\n\t\t\t\tHierarchicalNameMapper.DEFAULT,\n\t\t\t\tClock.SYSTEM)\
+    \ {\n\t\t\t@Override\n\t\t\tprotected Double nullGaugeValue() {\n\t\t\t\treturn\
+    \ Double.NaN;\n\t\t\t}\n\t\t};\n\t\tMetrics.addRegistry(registry);\n\t\tConsoleReporter.forRegistry(metricRegistry)\n\
+    \t\t               .filter((name, metric) -> metric instanceof Meter)\n\t\t  \
+    \             .build()\n\t\t               .start(1, TimeUnit.SECONDS);\n\t}\n\
+    }\n"
+  learner_created: false
+- name: src/utils/NettyUtils.java
+  visible: true
+  text: |
+    package com.example.part_10.utils;
+
+    import java.nio.charset.StandardCharsets;
+    import java.util.function.Function;
+
+    import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+    import org.reactivestreams.Publisher;
+    import reactor.core.publisher.Flux;
+    import reactor.netty.http.websocket.WebsocketInbound;
+    import reactor.netty.http.websocket.WebsocketOutbound;
+
+    public class NettyUtils {
+
+        public static Flux<String> prepareInput(WebsocketInbound inbound) {
+            return inbound
+                    .receiveFrames()
+                    .map(hc -> hc.content().toString(StandardCharsets.UTF_8));
+        }
+
+        public static Function<Flux<String>, Publisher<Void>> prepareOutbound(WebsocketOutbound outbound) {
+            return output -> outbound
+                    .sendObject(output.map(TextWebSocketFrame::new), __ -> true);
+        }
+    }
+  learner_created: false
+- name: src/ApplicationRunner.java
+  visible: true
+  placeholders:
+  - offset: 2859
+    length: 22
+    placeholder_text: // TODO Enable stream metrics
+    initial_state:
+      length: 29
+      offset: 2696
+    initialized_from_dependency: false
+    selected: false
+    status: Solved
+    encrypted_possible_answer: .metrics()
+  - offset: 3579
+    length: 13
+    placeholder_text: Flux.never();
+    initial_state:
+      length: 13
+      offset: 3444
+    initialized_from_dependency: false
+    selected: false
+    status: Solved
+    encrypted_possible_answer: "requestedInterval\n\t\t\t\t.handle((s, sink) -> {\n\
+      \t\t\t\t\ttry {\n\t\t\t\t\t\tlong value = Long.parseLong(s);\n\t\t\t\t\t\tif\
+      \ (value > 0 && value <=60) {\n\t\t\t\t\t\t\tsink.next(value);\n\t\t\t\t\t\t\
+      }\n\t\t\t\t\t} catch (NumberFormatException e) {\n\t\t\t\t\t\t// ignored\n\t\
+      \t\t\t\t}\n\t\t\t\t});"
+  - offset: 3875
+    length: 29
+    placeholder_text: ; // TODO Enable Backpressure
+    initial_state:
+      length: 29
+      offset: 3740
+    initialized_from_dependency: false
+    selected: false
+    status: Solved
+    encrypted_possible_answer: "\n\t\t\t\t.onBackpressureBuffer();"
+  text: "\nimport java.io.IOException;\nimport java.util.function.BiFunction;\n\n\
+    import com.example.part_10.utils.NettyUtils;\nimport com.mongodb.reactivestreams.client.MongoClients;\n\
+    import controller.WSHandler;\nimport org.reactivestreams.Publisher;\nimport org.slf4j.Logger;\n\
+    import org.slf4j.LoggerFactory;\nimport reactor.core.publisher.Flux;\nimport reactor.netty.http.server.HttpServer;\n\
+    import reactor.netty.http.websocket.WebsocketInbound;\nimport reactor.netty.http.websocket.WebsocketOutbound;\n\
+    import reactor.util.Loggers;\nimport repository.TradeRepository;\nimport repository.impl.H2TradeRepository;\n\
+    import repository.impl.MongoTradeRepository;\nimport service.CryptoService;\n\
+    import service.PriceService;\nimport service.TradeService;\nimport service.external.CryptoCompareService;\n\
+    import service.impl.DefaultPriceService;\nimport service.impl.DefaultTradeService;\n\
+    import utils.EmbeddedMongo;\nimport utils.JsonUtils;\nimport utils.MetricsConfig;\n\
+    \nimport static utils.H2Helper.createInMemH2;\nimport static utils.HttpResourceResolver.resourcePath;\n\
+    \npublic class ApplicationRunner {\n\n\tprivate static final Logger logger = LoggerFactory.getLogger(\"\
+    http-server\");\n\n\tpublic static void main(String[] args) throws IOException\
+    \ {\n\n\t\tEmbeddedMongo.run();\n\t\tLoggers.useSl4jLoggers();\n\t\tMetricsConfig.init();\n\
+    \t\t// TODO: Integrate Metrics reporting for all the services using Flux#metrics\n\
+    \n\t\tCryptoService cryptoCompareService = new CryptoCompareService();\n\t\tTradeRepository\
+    \ h2Repository = new H2TradeRepository(createInMemH2());\n\t\tTradeRepository\
+    \ mongoRepository = new MongoTradeRepository(MongoClients.create());\n\t\tPriceService\
+    \ defaultPriceService = new DefaultPriceService(cryptoCompareService);\n\t\tTradeService\
+    \ defaultTradeService = new DefaultTradeService(cryptoCompareService, h2Repository,\
+    \ mongoRepository);\n\t\tWSHandler handler = new WSHandler(defaultPriceService,\
+    \ defaultTradeService);\n\n\t\tHttpServer.create()\n\t\t          .host(\"localhost\"\
+    )\n\t\t          .port(8080)\n\t\t          .route(hsr ->\n\t\t\t          hsr.ws(\"\
+    /stream\", handleWebsocket(handler))\n                         .file(\"/favicon.ico\"\
+    , resourcePath(\"ui/favicon.ico\"))\n                         .file(\"/main.js\"\
+    , resourcePath(\"ui/main.js\"))\n                         .file(\"/\", resourcePath(\"\
+    ui/index.html\"))\n                         .file(\"/**\", resourcePath(\"ui/index.html\"\
+    ))\n\t\t          )\n\t\t          .bindNow()\n\t\t          .onDispose()\n\t\t\
+    \          .block();\n\t}\n\n\tprivate static BiFunction<WebsocketInbound, WebsocketOutbound,\
+    \ Publisher<Void>> handleWebsocket(WSHandler handler) {\n\t\treturn (req, res)\
+    \ ->\n\t\t\tNettyUtils.prepareInput(req)\n\t\t\t          .name(\"My Lovely Flux\
+    \ 1\")\n\t\t\t          .tag(\"My Super Important Key\", \"My Super Important\
+    \ Value\")\n\t\t\t          // TODO Enable stream metrics\n\t\t\t          .doOnNext(inMessage\
+    \ -> logger.info(\"[WS] >> \" + inMessage))\n\t\t\t          .transform(ApplicationRunner::handleRequestedAveragePriceIntervalValue)\n\
+    \t\t\t          .transform(handler::handle)\n\t\t\t          .map(JsonUtils::writeAsString)\n\
+    \t\t\t          .doOnNext(outMessage -> logger.info(\"[WS] << \" + outMessage))\n\
+    \t\t\t          .transform(ApplicationRunner::handleOutgoingStreamBackpressure)\n\
+    \t\t\t          .transform(NettyUtils.prepareOutbound(res));\n\t}\n\n\t// Visible\
+    \ for testing\n\tpublic static Flux<Long> handleRequestedAveragePriceIntervalValue(Flux<String>\
+    \ requestedInterval) {\n\t\t// TODO: input may be incorrect, pass only correct\
+    \ interval\n\t\t// TODO: ignore invalid values (empty, non number, <= 0, > 60)\n\
+    \t\treturn Flux.never();\n\t}\n\n\t// Visible for testing\n\tpublic static Flux<String>\
+    \ handleOutgoingStreamBackpressure(Flux<String> outgoingStream) {\n\t\t// TODO:\
+    \ Add backpressure handling\n\t\t// It is possible that writing data to output\
+    \ may be slower than rate of\n\t\t// incoming output data\n\n\t\treturn outgoingStream;\
+    \ // TODO Enable Backpressure\n\t}\n\n\n}\n"
+  learner_created: false
+- name: resources/logback.xml
+  visible: true
+  text: |-
+    <configuration>
+
+      <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+      </appender>
+
+      <root level="warn">
+        <appender-ref ref="STDOUT" />
+      </root>
+    </configuration>
+  learner_created: false
+- name: test/CryptoApplicationTests.java
+  visible: false
+  text: "import java.time.Duration;\n\nimport org.junit.jupiter.api.Test;\nimport\
+    \ reactor.core.publisher.DirectProcessor;\nimport reactor.core.publisher.Flux;\n\
+    import reactor.test.StepVerifier;\n\npublic class CryptoApplicationTests {\n\n\
+    \t@Test\n\tpublic void verifyIncomingMessageValidation() {\n\t\tStepVerifier.create(\n\
+    \t\t\t\tApplicationRunner.handleRequestedAveragePriceIntervalValue(\n\t\t\t\t\t\
+    \tFlux.just(\"Invalid\", \"32\", \"\", \"-1\", \"1\", \"0\", \"5\", \"62\", \"\
+    5.6\", \"12\")\n\t\t\t\t).take(Duration.ofSeconds(1)))\n\t\t            .expectNext(32L,\
+    \ 1L, 5L, 12L)\n\t\t            .verifyComplete();\n\t}\n\n\t@Test\n\tpublic void\
+    \ verifyOutgoingStreamBackpressure() {\n\t\tDirectProcessor<String> processor\
+    \ = DirectProcessor.create();\n\n\t\tStepVerifier\n\t\t\t\t.create(\n\t\t\t\t\t\
+    \tApplicationRunner.handleOutgoingStreamBackpressure(processor),\n\t\t\t\t\t\t\
+    0\n\t\t\t\t)\n\t\t\t\t.expectSubscription()\n\t\t\t\t.then(() -> processor.onNext(\"\
+    A\"))\n\t\t\t\t.then(() -> processor.onNext(\"B\"))\n\t\t\t\t.then(() -> processor.onNext(\"\
+    C\"))\n\t\t\t\t.then(() -> processor.onNext(\"D\"))\n\t\t\t\t.then(() -> processor.onNext(\"\
+    E\"))\n\t\t\t\t.then(() -> processor.onNext(\"F\"))\n\t\t\t\t.expectNoEvent(Duration.ofMillis(300))\n\
+    \t\t\t\t.thenRequest(6)\n\t\t\t\t.expectNext(\"A\", \"B\", \"C\", \"D\", \"E\"\
+    , \"F\")\n\t\t\t\t.thenCancel()\n\t\t\t\t.verify();\n\t}\n}"
+  learner_created: false
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 18 Nov 2022 19:36:58 UTC"
+record: -1

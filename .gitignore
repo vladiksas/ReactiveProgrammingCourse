@@ -1,0 +1,213 @@
+# Project exclude paths
+/.gradle/
+/Reactive Advanced/Context/task1/build/
+/Reactive Advanced/Context/task1/build/classes/java/main/
+/Reactive Advanced/Context/task1/build/classes/java/test/
+/Reactive Advanced/Context/task2/build/
+/Reactive Advanced/Context/task2/build/classes/java/main/
+/Reactive Advanced/Context/task2/build/classes/java/test/
+/Reactive Advanced/Context/task3/build/
+/Reactive Advanced/Context/task3/build/classes/java/main/
+/Reactive Advanced/Context/task3/build/classes/java/test/
+/Reactive Advanced/Control Backpressure/task1/build/
+/Reactive Advanced/Control Backpressure/task1/build/classes/java/main/
+/Reactive Advanced/Control Backpressure/task1/build/classes/java/test/
+/Reactive Advanced/Control Backpressure/task2/build/
+/Reactive Advanced/Control Backpressure/task2/build/classes/java/main/
+/Reactive Advanced/Control Backpressure/task2/build/classes/java/test/
+/Reactive Advanced/Control Backpressure/task3/build/
+/Reactive Advanced/Control Backpressure/task3/build/classes/java/main/
+/Reactive Advanced/Control Backpressure/task3/build/classes/java/test/
+/Reactive Advanced/Control Backpressure/task4/build/
+/Reactive Advanced/Control Backpressure/task4/build/classes/java/main/
+/Reactive Advanced/Control Backpressure/task4/build/classes/java/test/
+/Reactive Advanced/Control Backpressure/task5/build/
+/Reactive Advanced/Control Backpressure/task5/build/classes/java/main/
+/Reactive Advanced/Control Backpressure/task5/build/classes/java/test/
+/Reactive Advanced/Debugging/task1/build/
+/Reactive Advanced/Debugging/task1/build/classes/java/main/
+/Reactive Advanced/Debugging/task1/build/classes/java/test/
+/Reactive Advanced/Debugging/task2/build/
+/Reactive Advanced/Debugging/task2/build/classes/java/main/
+/Reactive Advanced/Debugging/task2/build/classes/java/test/
+/Reactive Advanced/Debugging/task3/build/
+/Reactive Advanced/Debugging/task3/build/classes/java/main/
+/Reactive Advanced/Debugging/task3/build/classes/java/test/
+/Reactive Advanced/Hot and Sharable/task1/build/
+/Reactive Advanced/Hot and Sharable/task1/build/classes/java/main/
+/Reactive Advanced/Hot and Sharable/task1/build/classes/java/test/
+/Reactive Advanced/Hot and Sharable/task2/build/
+/Reactive Advanced/Hot and Sharable/task2/build/classes/java/main/
+/Reactive Advanced/Hot and Sharable/task2/build/classes/java/test/
+/Reactive Advanced/Hot and Sharable/task3/build/
+/Reactive Advanced/Hot and Sharable/task3/build/classes/java/main/
+/Reactive Advanced/Hot and Sharable/task3/build/classes/java/test/
+/Reactive Advanced/Hot and Sharable/task4/build/
+/Reactive Advanced/Hot and Sharable/task4/build/classes/java/main/
+/Reactive Advanced/Hot and Sharable/task4/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task1/build/
+/Reactive Advanced/Multiple Sources/task1/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task1/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task2/build/
+/Reactive Advanced/Multiple Sources/task2/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task2/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task3/build/
+/Reactive Advanced/Multiple Sources/task3/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task3/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task4/build/
+/Reactive Advanced/Multiple Sources/task4/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task4/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task5/build/
+/Reactive Advanced/Multiple Sources/task5/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task5/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task6/build/
+/Reactive Advanced/Multiple Sources/task6/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task6/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task7/build/
+/Reactive Advanced/Multiple Sources/task7/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task7/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task8/build/
+/Reactive Advanced/Multiple Sources/task8/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task8/build/classes/java/test/
+/Reactive Advanced/Multiple Sources/task9/build/
+/Reactive Advanced/Multiple Sources/task9/build/classes/java/main/
+/Reactive Advanced/Multiple Sources/task9/build/classes/java/test/
+/Reactive Advanced/Multithreading Operators/task1/build/
+/Reactive Advanced/Multithreading Operators/task1/build/classes/java/main/
+/Reactive Advanced/Multithreading Operators/task1/build/classes/java/test/
+/Reactive Advanced/Multithreading Operators/task2/build/
+/Reactive Advanced/Multithreading Operators/task2/build/classes/java/main/
+/Reactive Advanced/Multithreading Operators/task2/build/classes/java/test/
+/Reactive Advanced/Multithreading Operators/task3/build/
+/Reactive Advanced/Multithreading Operators/task3/build/classes/java/main/
+/Reactive Advanced/Multithreading Operators/task3/build/classes/java/test/
+/Reactive Advanced/Multithreading Operators/task4/build/
+/Reactive Advanced/Multithreading Operators/task4/build/classes/java/main/
+/Reactive Advanced/Multithreading Operators/task4/build/classes/java/test/
+/Reactive Advanced/Multithreading Operators/task5/build/
+/Reactive Advanced/Multithreading Operators/task5/build/classes/java/main/
+/Reactive Advanced/Multithreading Operators/task5/build/classes/java/test/
+/Reactive Advanced/Resilience/task1/build/
+/Reactive Advanced/Resilience/task1/build/classes/java/main/
+/Reactive Advanced/Resilience/task1/build/classes/java/test/
+/Reactive Advanced/Resilience/task2/build/
+/Reactive Advanced/Resilience/task2/build/classes/java/main/
+/Reactive Advanced/Resilience/task2/build/classes/java/test/
+/Reactive Advanced/Resilience/task3/build/
+/Reactive Advanced/Resilience/task3/build/classes/java/main/
+/Reactive Advanced/Resilience/task3/build/classes/java/test/
+/Reactive Advanced/Resilience/task4/build/
+/Reactive Advanced/Resilience/task4/build/classes/java/main/
+/Reactive Advanced/Resilience/task4/build/classes/java/test/
+/Reactive Advanced/Resilience/task5/build/
+/Reactive Advanced/Resilience/task5/build/classes/java/main/
+/Reactive Advanced/Resilience/task5/build/classes/java/test/
+/Reactive Advanced/Resilience/task6/build/
+/Reactive Advanced/Resilience/task6/build/classes/java/main/
+/Reactive Advanced/Resilience/task6/build/classes/java/test/
+/Reactive Advanced/Resilience/task7/build/
+/Reactive Advanced/Resilience/task7/build/classes/java/main/
+/Reactive Advanced/Resilience/task7/build/classes/java/test/
+/Reactive Advanced/Resilience/task8/build/
+/Reactive Advanced/Resilience/task8/build/classes/java/main/
+/Reactive Advanced/Resilience/task8/build/classes/java/test/
+/Reactive Advanced/Resilience/task9/build/
+/Reactive Advanced/Resilience/task9/build/classes/java/main/
+/Reactive Advanced/Resilience/task9/build/classes/java/test/
+/Reactive Essentials/Async Publishers/CreateSequence/build/
+/Reactive Essentials/Async Publishers/CreateSequence/build/classes/java/main/
+/Reactive Essentials/Async Publishers/CreateSequence/build/classes/java/test/
+/Reactive Essentials/Async Publishers/CreateTempFile/build/
+/Reactive Essentials/Async Publishers/CreateTempFile/build/classes/java/main/
+/Reactive Essentials/Async Publishers/CreateTempFile/build/classes/java/test/
+/Reactive Essentials/Async Publishers/FibonacciSequence/build/
+/Reactive Essentials/Async Publishers/FibonacciSequence/build/classes/java/main/
+/Reactive Essentials/Async Publishers/FibonacciSequence/build/classes/java/test/
+/Reactive Essentials/Async Publishers/GenerateUUID/build/
+/Reactive Essentials/Async Publishers/GenerateUUID/build/classes/java/main/
+/Reactive Essentials/Async Publishers/GenerateUUID/build/classes/java/test/
+/Reactive Essentials/Async Publishers/PropertiesSource/build/
+/Reactive Essentials/Async Publishers/PropertiesSource/build/classes/java/main/
+/Reactive Essentials/Async Publishers/PropertiesSource/build/classes/java/test/
+/Reactive Essentials/Async Publishers/ValidateDuration/build/
+/Reactive Essentials/Async Publishers/ValidateDuration/build/classes/java/main/
+/Reactive Essentials/Async Publishers/ValidateDuration/build/classes/java/test/
+/Reactive Essentials/Common Operators/task1/build/
+/Reactive Essentials/Common Operators/task1/build/classes/java/main/
+/Reactive Essentials/Common Operators/task1/build/classes/java/test/
+/Reactive Essentials/Common Operators/task2/build/
+/Reactive Essentials/Common Operators/task2/build/classes/java/main/
+/Reactive Essentials/Common Operators/task2/build/classes/java/test/
+/Reactive Essentials/Common Operators/task3/build/
+/Reactive Essentials/Common Operators/task3/build/classes/java/main/
+/Reactive Essentials/Common Operators/task3/build/classes/java/test/
+/Reactive Essentials/Common Operators/task4/build/
+/Reactive Essentials/Common Operators/task4/build/classes/java/main/
+/Reactive Essentials/Common Operators/task4/build/classes/java/test/
+/Reactive Essentials/Common Operators/task5/build/
+/Reactive Essentials/Common Operators/task5/build/classes/java/main/
+/Reactive Essentials/Common Operators/task5/build/classes/java/test/
+/Reactive Essentials/Common Operators/task6/build/
+/Reactive Essentials/Common Operators/task6/build/classes/java/main/
+/Reactive Essentials/Common Operators/task6/build/classes/java/test/
+/Reactive Essentials/Common Operators/task7/build/
+/Reactive Essentials/Common Operators/task7/build/classes/java/main/
+/Reactive Essentials/Common Operators/task7/build/classes/java/test/
+/Reactive Essentials/Common Operators/task8/build/
+/Reactive Essentials/Common Operators/task8/build/classes/java/main/
+/Reactive Essentials/Common Operators/task8/build/classes/java/test/
+/Reactive Essentials/Common Operators/task9/build/
+/Reactive Essentials/Common Operators/task9/build/classes/java/main/
+/Reactive Essentials/Common Operators/task9/build/classes/java/test/
+/Reactive Essentials/Common Operators/task10/build/
+/Reactive Essentials/Common Operators/task10/build/classes/java/main/
+/Reactive Essentials/Common Operators/task10/build/classes/java/test/
+/Reactive Essentials/Common Operators/task11/build/
+/Reactive Essentials/Common Operators/task11/build/classes/java/main/
+/Reactive Essentials/Common Operators/task11/build/classes/java/test/
+/Reactive Essentials/Testing/task1/build/
+/Reactive Essentials/Testing/task1/build/classes/java/main/
+/Reactive Essentials/Testing/task1/build/classes/java/test/
+/Reactive Essentials/Testing/task2/build/
+/Reactive Essentials/Testing/task2/build/classes/java/main/
+/Reactive Essentials/Testing/task2/build/classes/java/test/
+/Reactive Essentials/Testing/task3/build/
+/Reactive Essentials/Testing/task3/build/classes/java/main/
+/Reactive Essentials/Testing/task3/build/classes/java/test/
+/Reactive In Action/Common Problems/task1/build/
+/Reactive In Action/Common Problems/task1/build/classes/java/main/
+/Reactive In Action/Common Problems/task1/build/classes/java/test/
+/Reactive In Action/Common Problems/task2/build/
+/Reactive In Action/Common Problems/task2/build/classes/java/main/
+/Reactive In Action/Common Problems/task2/build/classes/java/test/
+/Reactive In Action/Common Problems/task3/build/
+/Reactive In Action/Common Problems/task3/build/classes/java/main/
+/Reactive In Action/Common Problems/task3/build/classes/java/test/
+/Reactive In Action/Common Problems/task4/build/
+/Reactive In Action/Common Problems/task4/build/classes/java/main/
+/Reactive In Action/Common Problems/task4/build/classes/java/test/
+/Reactive In Action/Common Problems/task5/build/
+/Reactive In Action/Common Problems/task5/build/classes/java/main/
+/Reactive In Action/Common Problems/task5/build/classes/java/test/
+/Reactive In Action/Crypto Tracker/application/build/
+/Reactive In Action/Crypto Tracker/application/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/application/build/classes/java/test/
+/Reactive In Action/Crypto Tracker/common/build/
+/Reactive In Action/Crypto Tracker/common/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/crypto-service/build/
+/Reactive In Action/Crypto Tracker/crypto-service/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/crypto-service/build/classes/java/test/
+/Reactive In Action/Crypto Tracker/crypto-service-idl/build/
+/Reactive In Action/Crypto Tracker/crypto-service-idl/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/price-service/build/
+/Reactive In Action/Crypto Tracker/price-service/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/price-service/build/classes/java/test/
+/Reactive In Action/Crypto Tracker/price-service-idl/build/
+/Reactive In Action/Crypto Tracker/price-service-idl/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/trade-service/build/
+/Reactive In Action/Crypto Tracker/trade-service/build/classes/java/main/
+/Reactive In Action/Crypto Tracker/trade-service/build/classes/java/test/
+/Reactive In Action/Crypto Tracker/trade-service-idl/build/
+/Reactive In Action/Crypto Tracker/trade-service-idl/build/classes/java/main/
+/util/build/
+/util/build/classes/java/main/
